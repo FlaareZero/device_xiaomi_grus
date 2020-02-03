@@ -1253,5 +1253,8 @@
     <!-- Component name of the default wallpaper. This will be ImageWallpaper if not
          specified -->
     <string name="default_wallpaper_component" translatable="false">com.aospextended.aexpapers</string>
+    
+    <!-- enable night mode by default -->
+    <integer name="config_defaultNightMode">2</integer>
 
 </resources>

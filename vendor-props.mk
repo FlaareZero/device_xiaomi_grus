@@ -46,4 +46,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.bt.a2dp_offload_cap=sbc-aptx-aptxws-aptxhd-aac-ldac-aptxadaptive \
     vendor.display.enable_default_color_mode=1 \
     debug.hwui.renderer=skiavk \
-    ro.charger.enable_suspend=true
+    ro.charger.enable_suspend=true \
+    vendor.display.lcd_density=432
+    

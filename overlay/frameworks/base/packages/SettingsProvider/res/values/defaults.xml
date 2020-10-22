@@ -19,4 +19,10 @@
 <resources>
     <!-- Set the automatic brightness mode on by default -->
     <bool name="def_screen_brightness_automatic_mode">true</bool>
+    
+     <!-- Default animation scale -->
+    <fraction name="def_window_animation_scale">50%</fraction>
+    <fraction name="def_window_transition_scale">50%</fraction>
+        
+    <bool name="def_mobile_data_always_on">false</bool>
 </resources>

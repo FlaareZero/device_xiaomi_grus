@@ -34,14 +34,21 @@
 
     <bool name="config_show_mobile_plan">true</bool>
 
-    <string name="bliss_maintainer">pengus77</string>
-
-    <string name="config_customDozePackage">com.custom.ambient.display/com.custom.ambient.display.DozeSettings</string>
-
     <!-- Battery Health -->
     <string name="config_batChargeCycle"></string>
     <string name="config_batDesCap">/sys/class/power_supply/bms/charge_full_design</string>
     <string name="config_batCurCap">/sys/class/power_supply/bms/charge_full</string>
     <bool name="config_supportBatteryHealth">true</bool>
     <bool name="config_showChargingCycles">false</bool> 
+    
+     <!-- Package name and fully-qualified class name for the wallpaper picker activity. -->
+    <!--string name="config_wallpaper_picker_package" translatable="false">com.android.wallpaper</string-->
+    <string name="config_wallpaper_picker_class" translatable="false">com.android.customization.picker.CustomizationPickerActivity</string>
+
+    <!-- Fully-qualified class name for the styles & wallpaper picker activity. -->
+    <string name="config_styles_and_wallpaper_picker_class" translatable="false">com.android.customization.picker.CustomizationPickerActivity</string>
+
+    <!-- Settings suggestion package name -->
+    <string name="config_settingssuggestion_package_name" translatable="false">com.android.settings.intelligence</string>
+
 </resources>

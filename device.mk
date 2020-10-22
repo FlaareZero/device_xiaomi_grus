@@ -579,5 +579,6 @@ PRODUCT_PACKAGES += \
     SimpleGalleryPro \
     OPScreenRecorder \
     dmgc \
+#    CustomDoze \
 #    Pinball
 

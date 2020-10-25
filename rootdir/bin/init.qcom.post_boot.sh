@@ -10,33 +10,8 @@ write(){
 }
 
 function configure_zram_parameters() {
-    MemTotalStr=`cat /proc/meminfo | grep MemTotal`
-    MemTotal=${MemTotalStr:16:8}
-
-    low_ram=`getprop ro.config.low_ram`
-
-    # Zram disk - 75% for Go devices.
-    # For 512MB Go device, size = 384MB, set same for Non-Go.
-    # For 1GB Go device, size = 768MB, set same for Non-Go.
-    # For >=2GB Non-Go device, size = 1GB
-    # And enable lz4 zram compression for Go targets.
-
-    if [ "$low_ram" == "true" ]; then 
-        echo lz4 > /sys/block/zram0/comp_algorithm
-    fi   
-
-    if [ -f /sys/block/zram0/disksize ]; then 
-        if [ $MemTotal -le 524288 ]; then 
-            echo 402653184 > /sys/block/zram0/disksize
-        elif [ $MemTotal -le 1048576 ]; then 
-            echo 805306368 > /sys/block/zram0/disksize
-        else 
-            # Set Zram disk size=1.5GB for >=2GB Non-Go targets.
-            echo 1585446912 > /sys/block/zram0/disksize
-        fi   
-        mkswap /dev/block/zram0
-        swapon /dev/block/zram0 -p 32758
-    fi   
+    echo 0 > /sys/block/zram0/disksize
+    swapoff /dev/block/zram*
 }
 
 configure_zram_parameters
@@ -72,9 +47,6 @@ echo 1 > /proc/sys/kernel/sched_walt_rotate_big_tasks
 echo -6 >  /sys/devices/system/cpu/cpu6/sched_load_boost
 echo -6 >  /sys/devices/system/cpu/cpu7/sched_load_boost
 echo 85 > /sys/devices/system/cpu/cpu6/cpufreq/schedutil/hispeed_load
-
-echo "0:1209600" > /sys/module/cpu_boost/parameters/input_boost_freq
-echo 40 > /sys/module/cpu_boost/parameters/input_boost_ms
 
 # Set Memory parameters
 # configure_memory_parameters
@@ -146,20 +118,6 @@ echo 0 > /sys/module/lpm_levels/parameters/sleep_disabled
 
 cpuA=/sys/devices/system/cpu/cpufreq/policy0
 cpuB=/sys/devices/system/cpu/cpufreq/policy6
-
-write $cpuA/scaling_min_freq 576000
-write $cpuA/scaling_governor schedutil
-write $cpuA/schedutil/iowait_boost_enable 0
-write $cpuA/schedutil/pl 0
-write $cpuA/schedutil/up_rate_limit_us 20000
-write $cpuA/schedutil/down_rate_limit_us 500
-
-write $cpuB/scaling_min_freq 652000
-write $cpuB/scaling_governor schedutil
-write $cpuB/schedutil/iowait_boost_enable 0
-write $cpuB/schedutil/pl 0
-write $cpuB/schedutil/up_rate_limit_us 20000
-write $cpuB/schedutil/down_rate_limit_us 500
 
 # Enable idle state listener
 write /sys/class/drm/card0/device/idle_encoder_mask 1

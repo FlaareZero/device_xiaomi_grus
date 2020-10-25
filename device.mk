@@ -5,7 +5,7 @@
 #
 
 # Enable updating of APEXes
-$(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
+#$(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
 # Vendor
 $(call inherit-product-if-exists, vendor/xiaomi/grus/grus-vendor.mk)
@@ -23,14 +23,21 @@ $(call inherit-product, $(LOCAL_PATH)/configs/phone-xhdpi-6144-dalvik-heap.mk)
 
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
+# DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay-lineage
 
 PRODUCT_ENFORCE_RRO_TARGETS := *
+#PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += \
+#    $(LOCAL_PATH)/overlay-lineage/lineage-sdk
+
+# Soong namespaces
+PRODUCT_SOONG_NAMESPACES += \
+ 
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 2340
 TARGET_SCREEN_WIDTH := 1080
-
 TARGET_BOOT_ANIMATION_RES := 2280
+
 TARGET_HAS_PERSISTENT_RECOVERY := true
 
 # Device uses high-density artwork where available
@@ -88,15 +95,15 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.audio@2.0-impl \
     android.hardware.audio@2.0-service \
-    android.hardware.audio@6.0 \
-    android.hardware.audio@6.0-impl \
+    android.hardware.audio@5.0 \
+    android.hardware.audio@5.0-impl \
     android.hardware.audio.effect@2.0-impl \
-    android.hardware.audio.effect@6.0 \
-    android.hardware.audio.effect@6.0-impl \
+    android.hardware.audio.effect@5.0 \
+    android.hardware.audio.effect@5.0-impl \
     android.hardware.soundtrigger@2.2-impl \
     android.hardware.audio.common@2.0-util \
-    android.hardware.audio.common@6.0 \
-    android.hardware.audio.common@6.0-util \
+    android.hardware.audio.common@5.0 \
+    android.hardware.audio.common@5.0-util \
     android.hardware.bluetooth.audio@2.0-impl \
     android.hardware.soundtrigger@2.2-impl \
     android.hardware.bluetooth.a2dp@1.0-impl \
@@ -180,8 +187,8 @@ PRODUCT_PACKAGES += \
     hwcomposer.sdm710 \
     memtrack.sdm710 \
     android.frameworks.displayservice@1.0 \
-    android.hardware.graphics.composer@2.3-impl \
-    android.hardware.graphics.composer@2.3-service \
+    android.hardware.graphics.composer@2.1-impl \
+    android.hardware.graphics.composer@2.1-service \
     android.hardware.graphics.mapper@3.0 \
     android.hardware.graphics.mapper@2.0-impl-qti-display \
     android.hardware.memtrack@1.0-impl \
@@ -451,10 +458,6 @@ PRODUCT_PACKAGES += \
     libstdc++.vendor \
     com.android.vndk.current.on_vendor
 
-PRODUCT_COPY_FILES += \
-    prebuilts/vndk/v29/arm64/arch-arm-armv8-a/shared/vndk-sp/libcutils.so:$(TARGET_COPY_OUT_SYSTEM)/lib/libcutils-v29.so \
-    prebuilts/vndk/v29/arm64/arch-arm64-armv8-a/shared/vndk-sp/libcutils.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/libcutils-v29.so
-
 # HWBinder
 PRODUCT_PACKAGES += \
     libhwbinder \
@@ -500,6 +503,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/idc/qwerty.idc:system/usr/idc/qwerty.idc \
     $(LOCAL_PATH)/idc/qwerty2.idc:system/usr/idc/qwerty2.idc
+
 
 PRODUCT_PACKAGES += \
     NfcNci \
@@ -552,7 +556,27 @@ PRODUCT_PACKAGES += \
 # Remove stock apps
 PRODUCT_PACKAGES += \
     RemovePackages 
-
+    
 # DumpState
 PRODUCT_PACKAGES += \
     android.hardware.dumpstate@1.1-service-grus
+    
+# Dex QuickSetp    
+PRODUCT_DEXPREOPT_SPEED_APPS += \
+    SystemUI \
+    Settings \
+    Launcher3QuickStep \
+    OPLauncher2 \
+    NexusLauncherRelease
+         
+# Extras    
+PRODUCT_PACKAGES += \
+    SimTogglePlus \
+    mixplorer \
+    kiwi \
+    Remove \
+    SimpleGalleryPro \
+    OPScreenRecorder \
+    dmgc \
+#    Pinball
+

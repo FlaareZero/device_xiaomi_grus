@@ -14,7 +14,8 @@
 # limitations under the License.
 
 PRODUCT_MAKEFILES := \
-	$(LOCAL_DIR)/kowalski_grus.mk
+	$(LOCAL_DIR)/arrow_grus.mk
 
 COMMON_LUNCH_CHOICES := \
-    kowalski_grus-userdebug 
+    arrow_grus-userdebug 
+

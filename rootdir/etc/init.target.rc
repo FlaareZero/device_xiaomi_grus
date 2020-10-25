@@ -122,6 +122,30 @@ on boot
     chown system system /sys/class/leds/white/brightness
     chown system system /sys/class/leds/white/blink
     chown system system /sys/class/drm/card0-DSI-1/disp_param
+    
+    # XiaomiParts - vibrator
+    chown system system /sys/devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-01/c440000.qcom,spmi:qcom,pm660@1:qcom,haptics@c000/leds/vibrator/vmax_mv
+    chown system system /sys/devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-01/c440000.qcom,spmi:qcom,pm660@1:qcom,haptics@c000/leds/vibrator/vmax_override
+    chown system system /sys/devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-01/c440000.qcom,spmi:qcom,pm660@1:qcom,haptics@c000/leds/vibrator/vmax_user
+    chown system system /sys/devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-01/c440000.qcom,spmi:qcom,pm660@1:qcom,haptics@c000/leds/vibrator/vmax_mv_strong
+    chown system system /sys/devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-01/c440000.qcom,spmi:qcom,pm660@1:qcom,haptics@c000/leds/vibrator/vmax_call
+    
+    # XiaomiParts - FPS info
+    chown system system /sys/devices/platform/soc/ae00000.qcom,mdss_mdp/drm/card0/sde-crtc-0/measured_fps
+    
+    # XiaomiParts - kcal
+    chown system system /sys/module/msm_drm/parameters/kcal_cont
+    chown system system /sys/module/msm_drm/parameters/kcal_hue
+    chown system system /sys/module/msm_drm/parameters/kcal_red
+    chown system system /sys/module/msm_drm/parameters/kcal_blue
+    chown system system /sys/module/msm_drm/parameters/kcal_green
+    chown system system /sys/module/msm_drm/parameters/kcal_sat
+    chown system system /sys/module/msm_drm/parameters/kcal_val 
+    
+    # SimTogglePlus
+    chown system system /sys/class/qcom-battery/restricted_current
+    chown system system /sys/class/qcom-battery/restricted_charging     
+    
     start rmt_storage
     start rfs_access
     write /dev/cpuset/top-app/cpus 0-7

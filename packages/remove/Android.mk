@@ -1,10 +1,11 @@
 include $(CLEAR_VARS)
-LOCAL_MODULE := RemovePackages
+LOCAL_MODULE := Remove
 LOCAL_MODULE_CLASS := APPS
 LOCAL_MODULE_TAGS := optional
-# LOCAL_OVERRIDES_PACKAGES := AudioFX MusicFX ExactCalculator
+LOCAL_OVERRIDES_PACKAGES := AudioFX MusicFX Etar Calendar Launcher3QuickStep
 LOCAL_UNINSTALLABLE_MODULE := true
 LOCAL_CERTIFICATE := PRESIGNED
 LOCAL_SRC_FILES := /dev/null
 include $(BUILD_PREBUILT)
 
+#Snap Camera2

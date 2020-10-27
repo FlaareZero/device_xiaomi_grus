@@ -379,7 +379,7 @@
          that can be set by the user. -->
     <integer name="config_screenBrightnessDim">10</integer>
     <integer name="config_screenBrightnessDark">15</integer>
-    <integer name="config_screenBrightnessDoze">1</integer>
+    <integer name="config_screenBrightnessDoze">10</integer>
     <bool name="config_allowAutoBrightnessWhileDozing">true</bool>
 
     <bool name="config_dozeAlwaysOnDisplayAvailable">true</bool>
@@ -1061,7 +1061,7 @@
     <bool name="config_hasOledDisplay">true</bool>
 
     <!-- Whether to show battery percentage inside icon -->
-    <bool name="config_battery_percentage_show_inside_icon">true</bool>
+    <bool name="config_battery_percentage_show_inside_icon">false</bool>
 
     <!-- Default list of files pinned by the Pinner Service -->
     <string-array translatable="false" name="config_defaultPinnerServiceFiles">
@@ -1177,7 +1177,7 @@
     <bool name="config_dozePulsePickup">true</bool>
     
      <!-- Whether or not aware is enabled by default -->
-    <bool name="config_awareSettingAvailable">true</bool>
+    <bool name="config_awareSettingAvailable">false</bool>
     
     
     

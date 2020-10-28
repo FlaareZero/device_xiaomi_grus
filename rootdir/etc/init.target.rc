@@ -622,6 +622,10 @@ on post-fs-data
     restorecon /sys/module/migt/parameters/migt_ms
     chmod 0777 /sys/module/migt/parameters/migt_thresh
     restorecon /sys/module/migt/parameters/migt_thresh
+    
+#   Smart Charging
+    chown system system /sys/devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-00/c440000.qcom,spmi:qcom,pm660@0:qcom,qpnp-smb2/power_supply/battery/input_suspend
+    chmod 0666 /sys/devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-00/c440000.qcom,spmi:qcom,pm660@0:qcom,qpnp-smb2/power_supply/battery/input_suspend
 
 on property:vendor.audio.pa.ftcupdate=0
     start ftc_update

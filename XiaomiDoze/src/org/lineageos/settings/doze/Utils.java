@@ -21,9 +21,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.UserHandle;
-import androidx.preference.Preference;
 import androidx.preference.PreferenceManager;
-import androidx.preference.SwitchPreference;
 import android.provider.Settings;
 import android.util.Log;
 
@@ -37,10 +35,8 @@ public final class Utils {
     private static final String DOZE_INTENT = "com.android.systemui.doze.pulse";
 
     protected static final String CATEG_PROX_SENSOR = "proximity_sensor";
-    protected static final String CATEG_TILT_SENSOR = "tilt_sensor";
 
     protected static final String GESTURE_PICK_UP_KEY = "gesture_pick_up";
-    protected static final String GESTURE_RAISE_TO_WAKE_KEY = "gesture_raise_to_wake";
     protected static final String GESTURE_HAND_WAVE_KEY = "gesture_hand_wave";
     protected static final String GESTURE_POCKET_KEY = "gesture_pocket";
 
@@ -104,16 +100,6 @@ public final class Utils {
     protected static boolean isPickUpEnabled(Context context) {
         return isGestureEnabled(context, GESTURE_PICK_UP_KEY);
     }
-    
-    protected static void setPickUp(Preference preference, boolean value) {
-        SwitchPreference pickup = (SwitchPreference)preference;
-        pickup.setChecked(value);
-        pickup.setEnabled(!value);
-    }
-    
-    protected static boolean isRaiseToWakeEnabled(Context context) {
-        return isGestureEnabled(context, GESTURE_RAISE_TO_WAKE_KEY);
-    }
 
     protected static boolean isHandwaveGestureEnabled(Context context) {
         return isGestureEnabled(context, GESTURE_HAND_WAVE_KEY);
@@ -125,7 +111,6 @@ public final class Utils {
 
     protected static boolean sensorsEnabled(Context context) {
         return isPickUpEnabled(context) || isHandwaveGestureEnabled(context)
-                || isPocketGestureEnabled(context) || isRaiseToWakeEnabled(context);
+                || isPocketGestureEnabled(context);
     }
-
 }

@@ -21,7 +21,7 @@
     <bool name="configShowDeviceSensitiveInfo">false</bool>
 
     <!-- Device specific doze package -->
-    <string name="config_customDozePackage" translatable="false">com.android.systemui/com.android.systemui.doze.DozeService</string>
+    <string name="config_customDozePackage" translatable="false">org.lineageos.settings.doze/org.lineageos.settings.doze.DozeSettingsActivity</string>
 
     <!-- Device specific gesture package -->
     <string name="config_customGesturesPackage" translatable="false"></string>

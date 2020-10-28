@@ -1174,10 +1174,13 @@
     <bool name="config_useRoundIcon">true</bool>
     
     <!-- Doze: should the TYPE_PICK_UP_GESTURE sensor be used as a pulse signal. -->
-    <bool name="config_dozePulsePickup">true</bool>
+    <bool name="config_dozePulsePickup">false</bool>
     
      <!-- Whether or not aware is enabled by default -->
     <bool name="config_awareSettingAvailable">false</bool>
+    
+     <!-- If the sensor that wakes up the lock screen is available or not. -->
+    <bool name="config_dozeWakeLockScreenSensorAvailable">false</bool>
     
     
     

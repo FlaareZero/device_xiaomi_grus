@@ -50,5 +50,11 @@
 
     <!-- Settings suggestion package name -->
     <string name="config_settingssuggestion_package_name" translatable="false">com.android.settings.intelligence</string>
+    
+    <!-- Display additional System Update menu if true -->
+    <bool name="config_additional_system_update_setting_enable">false</bool>
+    
+    <!-- Whether to show Smooth Display feature in Settings Options -->
+    <bool name="config_show_smooth_display">true</bool>
 
 </resources>

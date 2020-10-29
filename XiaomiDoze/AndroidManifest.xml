@@ -27,8 +27,8 @@
     <protected-broadcast android:name="com.android.systemui.doze.pulse" />
 
     <uses-sdk
-        android:minSdkVersion="24"
-        android:targetSdkVersion="24"/>
+        android:minSdkVersion="29"
+        android:targetSdkVersion="30"/>
 
     <application
         android:label="@string/device_settings_app_name"
@@ -49,6 +49,12 @@
             android:name=".DozeSettingsActivity"
             android:label="@string/ambient_display_title"
             android:theme="@style/Theme.Main">
+            <intent-filter>
+                <action android:name="com.android.settings.action.IA_SETTINGS" />
+            </intent-filter>
+            <meta-data
+                android:name="com.android.settings.category"
+                android:value="com.android.settings.category.ia.lockscreen" />
         </activity>
 
     </application>

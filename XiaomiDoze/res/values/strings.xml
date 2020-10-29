@@ -26,7 +26,7 @@
     <string name="device_settings_app_name">Advanced settings</string>
 
     <!-- Ambient Display -->
-    <string name="ambient_display_title">Ambient display</string>
+    <string name="ambient_display_title">Wake gestures</string>
 
     <!-- Tilt sensor -->
     <string name="tilt_sensor_title">Tilt sensor</string>

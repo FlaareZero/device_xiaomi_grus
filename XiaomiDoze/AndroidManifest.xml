@@ -54,7 +54,7 @@
             </intent-filter>
             <meta-data
                 android:name="com.android.settings.category"
-                android:value="com.android.settings.category.ia.lockscreen" />
+                android:value="com.android.settings.category.ia.gestures" />
         </activity>
 
     </application>

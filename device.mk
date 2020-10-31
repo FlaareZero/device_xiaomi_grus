@@ -579,6 +579,6 @@ PRODUCT_PACKAGES += \
     SimpleGalleryPro \
     OPScreenRecorder \
     dmgc \
-    XiaomiDoze \
+#    XiaomiDoze \
 #    Pinball
 

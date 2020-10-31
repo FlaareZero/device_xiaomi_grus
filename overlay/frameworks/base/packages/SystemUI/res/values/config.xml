@@ -33,8 +33,7 @@
     <bool name="doze_suspend_display_state_supported">false</bool>
 
     <integer name="config_maxVisibleNotificationIcons">6</integer>
-    <integer name="config_maxVisibleNotificationIconsOnLock">6</integer>caffeine,ambient_display,usb_tether,sync,sound,screenshot,heads_up,theme,fpsinfo
-    </string>
+    <integer name="config_maxVisibleNotificationIconsOnLock">6</integer>
     <integer name="config_maxVisibleStatusIconContainer">7</integer>
     
       <!-- Tiles native to System UI. Order should match "quick_settings_tiles_default" -->

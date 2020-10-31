@@ -40,7 +40,7 @@
     <string name="quick_settings_tiles_stock" translatable="false">wifi,cell,battery,dnd,flashlight,rotation,bt,airplane,nfc,location,hotspot,inversion,saver,dark,work,cast,night,reverse,heads_up,reverse,heads_up,usb_tether,screenshot,caffeine,ambient_display,sync,sound,theme,fpsinfo</string>
     
       <!-- The default tiles to display in QuickSettings -->
-    <string name="quick_settings_tiles_default" translatable="false">wifi,custom(com.elpaablo.simtoggleplus/.Sim1TileService),custom(com.elpaablo.simtoggleplus/.Sim2TileService),bt,custom(com.elpaablo.simtoggleplus/.LTETileService),cell,custom(com.elpaablo.simtoggleplus/.ADBTileService),custom(com.elpaablo.simtoggleplus/.RCTileService),location,nfc,flashlight,dataswitch,battery,airplane,dark,sync,sound,custom(com.oneplus.screenrecord/.core.SystemUITileService)
+    <string name="quick_settings_tiles_default" translatable="false">wifi,custom(com.elpaablo.simtoggleplus/.Sim1TileService),custom(com.elpaablo.simtoggleplus/.Sim2TileService),bt,custom(com.elpaablo.simtoggleplus/.LTETileService),cell,custom(com.elpaablo.simtoggleplus/.ADBTileService),custom(com.elpaablo.simtoggleplus/.RCTileService),location,nfc,flashlight,theme,fpsinfo,battery,airplane,dark,sync,sound,custom(com.oneplus.screenrecord/.core.SystemUITileService)
 </string>
     
     <!-- The minimum number of tiles to display in QuickSettings -->
@@ -51,7 +51,7 @@
 
     
     <!-- Launcher package name for overlaying icons. -->
-    <!--string name="launcher_overlayable_package" translatable="false">com.android.launcher3</string-->
+    <string name="launcher_overlayable_package" translatable="false">com.android.launcher3</string>
 
     <!-- ThemePicker package name for overlaying icons. -->
     <!--string name="themepicker_overlayable_package" translatable="false">com.android.wallpaper</string-->

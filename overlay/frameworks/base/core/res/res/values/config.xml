@@ -380,7 +380,7 @@
     <integer name="config_screenBrightnessDim">10</integer>
     <integer name="config_screenBrightnessDark">15</integer>
     <integer name="config_screenBrightnessDoze">10</integer>
-    <bool name="config_allowAutoBrightnessWhileDozing">true</bool>
+    <bool name="config_allowAutoBrightnessWhileDozing">false</bool>
 
     <bool name="config_dozeAlwaysOnDisplayAvailable">true</bool>
 

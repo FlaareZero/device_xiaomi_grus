@@ -122,18 +122,18 @@ on boot
     chown system system /sys/class/leds/white/brightness
     chown system system /sys/class/leds/white/blink
     chown system system /sys/class/drm/card0-DSI-1/disp_param
-    
-    # XiaomiParts - vibrator
+####    
+    # vibrator
     chown system system /sys/devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-01/c440000.qcom,spmi:qcom,pm660@1:qcom,haptics@c000/leds/vibrator/vmax_mv
     chown system system /sys/devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-01/c440000.qcom,spmi:qcom,pm660@1:qcom,haptics@c000/leds/vibrator/vmax_override
     chown system system /sys/devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-01/c440000.qcom,spmi:qcom,pm660@1:qcom,haptics@c000/leds/vibrator/vmax_user
     chown system system /sys/devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-01/c440000.qcom,spmi:qcom,pm660@1:qcom,haptics@c000/leds/vibrator/vmax_mv_strong
     chown system system /sys/devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-01/c440000.qcom,spmi:qcom,pm660@1:qcom,haptics@c000/leds/vibrator/vmax_call
     
-    # XiaomiParts - FPS info
+    # FPS info
     chown system system /sys/devices/platform/soc/ae00000.qcom,mdss_mdp/drm/card0/sde-crtc-0/measured_fps
     
-    # XiaomiParts - kcal
+    # kcal
     chown system system /sys/module/msm_drm/parameters/kcal_cont
     chown system system /sys/module/msm_drm/parameters/kcal_hue
     chown system system /sys/module/msm_drm/parameters/kcal_red
@@ -142,9 +142,29 @@ on boot
     chown system system /sys/module/msm_drm/parameters/kcal_sat
     chown system system /sys/module/msm_drm/parameters/kcal_val 
     
-    # SimTogglePlus
+    # restricted charging/current
     chown system system /sys/class/qcom-battery/restricted_current
-    chown system system /sys/class/qcom-battery/restricted_charging     
+    chown system system /sys/class/qcom-battery/restricted_charging  
+    
+    # cpu profiles
+    chown system system /sys/devices/system/cpu/cpu0/cpufreq/schedutil/up_rate_limit_us
+    chown system system /sys/devices/system/cpu/cpu0/cpufreq/schedutil/down_rate_limit_us
+    chown system system /sys/devices/system/cpu/cpu0/cpufreq/schedutil/hispeed_freq
+    chown system system  /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
+    chown system system  /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
+    chown system system /sys/devices/system/cpu/cpu0/cpufreq/schedutil/hispeed_load
+
+    chown system system /sys/devices/system/cpu/cpu6/cpufreq/schedutil/up_rate_limit_us
+    chown system system /sys/devices/system/cpu/cpu6/cpufreq/schedutil/down_rate_limit_us
+    chown system system /sys/devices/system/cpu/cpu6/cpufreq/schedutil/hispeed_freq
+    chown system system /sys/devices/system/cpu/cpu6/cpufreq/scaling_min_freq
+    chown system system  /sys/devices/system/cpu/cpu6/cpufreq/scaling_max_freq
+    chown system system /sys/devices/system/cpu/cpu6/cpufreq/schedutil/hispeed_load
+    
+    chown system system /sys/class/kgsl/kgsl-3d0/min_clock_mhz
+    chown system system /sys/class/kgsl/kgsl-3d0/max_clock_mhz
+    chown system system /sys/module/adreno_idler/parameters/adreno_idler_active   
+####
     
     start rmt_storage
     start rfs_access

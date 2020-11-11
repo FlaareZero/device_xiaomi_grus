@@ -5,7 +5,7 @@
 #
 
 # Enable updating of APEXes
-#$(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
 # Vendor
 $(call inherit-product-if-exists, vendor/xiaomi/grus/grus-vendor.mk)
@@ -28,7 +28,6 @@ PRODUCT_ENFORCE_RRO_TARGETS := *
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
- 
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 2340
@@ -289,7 +288,7 @@ PRODUCT_COPY_FILES += \
 # Lights
 PRODUCT_PACKAGES += \
     android.hardware.light@2.0-service.grus \
-    lights.sdm710
+    lights.sdm710 \
 
 # IPACM
 PRODUCT_PACKAGES += \

@@ -378,9 +378,9 @@
          timeout expires.  May be less than the minimum allowed brightness setting
          that can be set by the user. -->
     <integer name="config_screenBrightnessDim">10</integer>
-    <integer name="config_screenBrightnessDark">15</integer>
-    <integer name="config_screenBrightnessDoze">10</integer>
-    <bool name="config_allowAutoBrightnessWhileDozing">false</bool>
+    <integer name="config_screenBrightnessDark">2</integer>
+    <integer name="config_screenBrightnessDoze">2</integer>
+    <bool name="config_allowAutoBrightnessWhileDozing">true</bool>
 
     <bool name="config_dozeAlwaysOnDisplayAvailable">true</bool>
 
@@ -1082,31 +1082,6 @@
         -->
     <bool name="config_fillMainBuiltInDisplayCutout">false</bool>
 
-    <!-- Display mode remapping table.
-         If the mode names returned by the backend do not match
-         the predefined and translated strings in the Settings
-         app, they can be remapped here. The format is
-         "oldname:newname", one per entry. -->
-    <string-array name="config_displayModeMappings" translatable="false">
-        <item>38default_OLED:Default OLED</item>
-        <item>36P3_native:Standard</item>
-        <item>hal_hdr:HDR</item>
-        <item>40smart_mc:DCI_P3</item>
-        <item>03srgb_d65:sRGB</item>
-        <item>41game1:Game</item>
-    </string-array>
-
-    <!-- Should we filter any display modes which are unampped? -->
-    <bool name="config_filterDisplayModes">true</bool>
-
-    <!-- List supported color modes.-->
-    <integer-array name="config_availableColorModes">
-    <item>0</item>
-    <item>1</item>
-    <item>2</item>
-    <item>3</item>
-    </integer-array>
-
     <bool name="config_setColorTransformAccelerated">true</bool>
     <bool name="config_enableAutoPowerModes">true</bool>
 
@@ -1206,10 +1181,6 @@
     <dimen name="config_buttonBrightnessSettingDefaultFloat">1.0</dimen>
     <bool name="config_deviceHasVariableButtonBrightness">false</bool>
 
-
-    <!-- Whether to allow process with media UID to access CameraServiceProxy -->
-    <bool name="config_allowMediaUidForCameraServiceProxy">true</bool>
-    
     <!-- Flag indicating whether we should enable smart battery. -->
     <bool name="config_smart_battery_available">true</bool>
     

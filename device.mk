@@ -252,7 +252,8 @@ PRODUCT_DEXPREOPT_SPEED_APPS += \
 
 # Fingerprint
 PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.fingerprint.xml:system/etc/permissions/android.hardware.fingerprint.xml
+    frameworks/native/data/etc/android.hardware.fingerprint.xml:system/etc/permissions/android.hardware.fingerprint.xml \
+    $(LOCAL_PATH)/configs/vendor.lineage.biometrics.fingerprint.inscreen.xml:system/etc/permissions/vendor.lineage.biometrics.fingerprint.inscreen.xml
 
 # Fingerprint
 PRODUCT_PACKAGES += \
@@ -541,8 +542,8 @@ PRODUCT_PACKAGES += \
     AntHalService
 
 # Display calibration
-# PRODUCT_PACKAGES += \
-#     vendor.lineage.livedisplay@2.0-service.xiaomi
+PRODUCT_PACKAGES += \
+     vendor.lineage.livedisplay@2.0-service.xiaomi
 
 # vndfwk
 PRODUCT_PACKAGES += \
@@ -561,7 +562,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.dumpstate@1.1-service-grus
     
-# Dex QuickSetp    
+# Dex  
 PRODUCT_DEXPREOPT_SPEED_APPS += \
     SystemUI \
     Settings \
@@ -578,6 +579,5 @@ PRODUCT_PACKAGES += \
     SimpleGalleryPro \
     OPScreenRecorder \
     dmgc \
-#    XiaomiDoze \
 #    Pinball
 

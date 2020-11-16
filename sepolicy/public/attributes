@@ -1,1 +1,4 @@
 hal_attribute(mlipay)
+attribute hal_perf; 
+attribute hal_perf_client;
+attribute hal_perf_server;

@@ -47,5 +47,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.charger.enable_suspend=true \
     ro.hwui.use_vulkan=true \
     ro.hwui.render_ahead=1 \
-    ro.charger.enable_suspend=true
+    ro.charger.enable_suspend=true \
+    vendor.display.dataspace_saturation_matrix=1.16868,-0.03155,-0.01473,-0.16868,1.03155,-0.05899,0.00000,0.00000,1.07372
 

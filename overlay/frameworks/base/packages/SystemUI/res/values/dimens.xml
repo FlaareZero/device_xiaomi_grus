@@ -27,4 +27,9 @@
     <dimen name="display_cutout_touchable_region_size">12dp</dimen>
 
     <dimen name="system_icons_keyguard_padding_end">8dp</dimen>
+    
+    <!--  Blur radius on status bar window and power menu  -->
+    <dimen name="min_window_blur_radius">1px</dimen>
+    <dimen name="max_window_blur_radius">100px</dimen>
+    
 </resources>

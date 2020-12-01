@@ -1106,7 +1106,7 @@
     <integer name="config_sysBatteryTempMultiplier">10</integer>
     <bool name="config_hasVowifi">true</bool>
     <bool name="config_targetUsesInKernelDimming">false</bool>
-
+    
     <!-- List of biometric sensors on the device, in decreasing strength. Consumed by AuthService
          when registering authenticators with BiometricService. Format must be ID:Modality:Strength,
          where: IDs are unique per device, Modality as defined in BiometricAuthenticator.java,

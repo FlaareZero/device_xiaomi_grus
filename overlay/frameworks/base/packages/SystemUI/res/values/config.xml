@@ -37,7 +37,7 @@
     <integer name="config_maxVisibleStatusIconContainer">7</integer>
     
     <!-- The default tiles to display in QuickSettings -->
-    <string name="quick_settings_tiles_default" translatable="false">wifi,custom(com.elpaablo.simtoggleplus/.Sim1TileService),custom(com.elpaablo.simtoggleplus/.Sim2TileService),bt,custom(com.elpaablo.simtoggleplus/.LTETileService),cell,custom(com.elpaablo.simtoggleplus/.ADBTileService),custom(com.elpaablo.simtoggleplus/.RCTileService),location,nfc,flashlight,theme,fpsinfo,battery,smart_charge,airplane,dark,sync,sound,custom(com.oneplus.screenrecord/.core.SystemUITileService),hotspot,inversion,saver,work,cast,night,reverse,volume_panel,vpn,aod,dataswitch,cpuinfo,reboot,mono,soundsearch,music,compass,smartpixels,gaming
+    <string name="quick_settings_tiles_default" translatable="false">wifi,custom(com.elpaablo.simtoggleplus/.Sim1TileService),custom(com.elpaablo.simtoggleplus/.Sim2TileService),bt,custom(com.elpaablo.simtoggleplus/.LTETileService),cell,custom(com.elpaablo.simtoggleplus/.ADBTileService),custom(com.elpaablo.simtoggleplus/.RCTileService),location,nfc,flashlight,theme,fpsinfo,battery,smart_charge,cpuprofile,airplane,dark,sync,sound,custom(com.oneplus.screenrecord/.core.SystemUITileService),hotspot,inversion,saver,work,cast,night,reverse,volume_panel,vpn,aod,dataswitch,cpuinfo,reboot,mono,soundsearch,music,compass,smartpixels,gaming
 </string>
     
     <!-- The minimum number of tiles to display in QuickSettings -->

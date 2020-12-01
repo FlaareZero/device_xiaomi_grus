@@ -32,17 +32,6 @@ echo 140 > /proc/sys/kernel/sched_group_upmigrate
 echo 120 > /proc/sys/kernel/sched_group_downmigrate
 echo 1 > /proc/sys/kernel/sched_walt_rotate_big_tasks
 
-# configure governor settings for little cluster
-#echo "schedutil" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
-#echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/schedutil/rate_limit_us
-#echo 1209600 > /sys/devices/system/cpu/cpu0/cpufreq/schedutil/hispeed_freq
-#echo 576000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
-# configure governor settings for big cluster
-#echo "schedutil" > /sys/devices/system/cpu/cpu6/cpufreq/scaling_governor
-#echo 0 > /sys/devices/system/cpu/cpu6/cpufreq/schedutil/rate_limit_us
-#echo 1344000 > /sys/devices/system/cpu/cpu6/cpufreq/schedutil/hispeed_freq
-#echo 652800 > /sys/devices/system/cpu/cpu6/cpufreq/scaling_min_freq
-
 write /proc/sys/kernel/perf_cpu_time_max_percent 5
 write /proc/sys/kernel/sched_autogroup_enabled 1
 write /proc/sys/kernel/sched_enable_thread_grouping 1
@@ -57,36 +46,12 @@ write /proc/sys/kernel/sched_wakeup_granularity_ns 10000000
 
 # configure governor settings for little cluster
 echo "schedutil" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
-echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/schedutil/up_rate_limit_us
-echo 1000 > /sys/devices/system/cpu/cpu0/cpufreq/schedutil/down_rate_limit_us
-echo 1209600 > /sys/devices/system/cpu/cpu0/cpufreq/schedutil/hispeed_freq
-echo 576000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
 
 # configure governor settings for big cluster
 echo "schedutil" > /sys/devices/system/cpu/cpu6/cpufreq/scaling_governor
-echo 0 > /sys/devices/system/cpu/cpu6/cpufreq/schedutil/up_rate_limit_us
-echo 1000 > /sys/devices/system/cpu/cpu6/cpufreq/schedutil/down_rate_limit_us
-echo 1344000 > /sys/devices/system/cpu/cpu6/cpufreq/schedutil/hispeed_freq
-echo 652000 > /sys/devices/system/cpu/cpu6/cpufreq/scaling_min_freq
-
-# sched_load_boost as -6 is equivalent to target load as 85. It is per cpu tunable.
-echo -6 >  /sys/devices/system/cpu/cpu6/sched_load_boost
-echo -6 >  /sys/devices/system/cpu/cpu7/sched_load_boost
-echo 85 > /sys/devices/system/cpu/cpu6/cpufreq/schedutil/hispeed_load
-
-echo "0:1036800" > /sys/module/cpu_boost/parameters/input_boost_freq
-echo 120 > /sys/module/cpu_boost/parameters/input_boost_ms
-echo "0:1036800" > /sys/module/cpu_boost/parameters/powerkey_input_boost_freq
-echo 400 > /sys/module/cpu_boost/parameters/powerkey_input_boost_ms
 
 # Set Memory parameters
 configure_memory_parameters
-
-# adjust min gpu freq
-echo 267 > /sys/class/kgsl/kgsl-3d0/min_clock_mhz
-
-# disable adreno idler by default
-echo "N" > /sys/module/adreno_idler/parameters/adreno_idler_active
 
 # Set Memory parameters
 # configure_memory_parameters
@@ -176,12 +141,14 @@ chmod 444 /sys/class/thermal/thermal_message/sconfig
 
 # Unify all blocks setup
 for i in /sys/block/*/queue; do
-  write $i/read_ahead_kb 256
+if [ $i != "sda" && $i != "sde"  ]; then
+#  write $i/read_ahead_kb 256
   write $i/add_random 0
   write $i/iostats 0
   write $i/rotational 0
-  write $i/scheduler bfq
-done
+#  write $i/scheduler bfq
+fi
+done 
 
 # Reset entropy values
 write /proc/sys/kernel/random/read_wakeup_threshold 128

@@ -560,10 +560,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     RemovePackages 
     
-# DumpState
-PRODUCT_PACKAGES += \
-    android.hardware.dumpstate@1.1-service-grus
-    
 # Dex  
 PRODUCT_DEXPREOPT_SPEED_APPS += \
     SystemUI \
@@ -582,4 +578,5 @@ PRODUCT_PACKAGES += \
     OPScreenRecorder \
     dmgc \
 #    Pinball
+
 

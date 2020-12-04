@@ -141,12 +141,12 @@ chmod 444 /sys/class/thermal/thermal_message/sconfig
 
 # Unify all blocks setup
 for i in /sys/block/*/queue; do
-if [ $i != "sda" && $i != "sde"  ]; then
-#  write $i/read_ahead_kb 256
-  write $i/add_random 0
-  write $i/iostats 0
-  write $i/rotational 0
-#  write $i/scheduler bfq
+   write $i/add_random 0
+   write $i/iostats 0
+   write $i/rotational 0
+if [ $i != /sys/block/sda/queue && $i != /sys/block/sde/queue ]; then
+   write $i/read_ahead_kb 256
+   write $i/scheduler bfq
 fi
 done 
 

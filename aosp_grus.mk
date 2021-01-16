@@ -25,21 +25,24 @@ PRODUCT_BRAND := Xiaomi
 PRODUCT_MODEL := MI 9 SE
 PRODUCT_MANUFACTURER := Xiaomi
 
-BUILD_FINGERPRINT := "google/walleye/walleye:8.1.0/OPM1.171019.011/4448085:user/release-keys" \
+BUILD_FINGERPRINT := "google/redfin/redfin:11/RQ1D.210105.003/7005430:user/release-keys" \
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    PRIVATE_BUILD_DESC="walleye-user 8.1.0 OPM1.171019.011 4448085 release-keys" \
+    PRIVATE_BUILD_DESC="redfin-user 11 RD1A.201105.003.C1 6886399 release-keys" \
     PRODUCT_NAME="grus" \
     TARGET_DEVICE="grus"
 
-PLATFORM_SECURITY_PATCH := 2020-11-05
+PLATFORM_SECURITY_PATCH := 2021-01-05
+
+WITH_GAPPS := false
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.build.fingerprint=google/walleye/walleye:8.1.0/OPM1.171019.011/4448085:user/release-keys \
-    ro.build.description=walleye-user 8.1.0 OPM1.171019.011 4448085 release-keys
+    ro.build.fingerprint=google/redfin/redfin:11/RQ1D.210105.003/7005430:user/release-keys \
+    ro.build.description=redfin-user 11 RD1A.201105.003.C1 6886399 release-keys
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.device_config.runtime_native.usap_pool_enabled=true
+    persist.device_config.runtime_native.usap_pool_enabled=true \
+    ro.debuggable=0
 
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 PRODUCT_ART_TARGET_INCLUDE_DEBUG_BUILD := false

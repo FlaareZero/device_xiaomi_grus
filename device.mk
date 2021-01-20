@@ -570,7 +570,6 @@ PRODUCT_PACKAGES += \
     Remove \
     SimpleGalleryPro \
     OPScreenRecorder \
-    dmgc \
-#    Pinball
+    onfire
 
 

@@ -33,7 +33,7 @@
     <bool name="config_supportBatteryHealth">true</bool>
     <bool name="config_showChargingCycles">false</bool> 
     
-     <!-- Package name and fully-qualified class name for the wallpaper picker activity. -->
+    <!-- Package name and fully-qualified class name for the wallpaper picker activity. -->
     <!--string name="config_wallpaper_picker_package" translatable="false">com.android.wallpaper</string-->
     <string name="config_wallpaper_picker_class" translatable="false">com.android.customization.picker.CustomizationPickerActivity</string>
 
@@ -50,4 +50,8 @@
     <!-- When true enable gesture setting. -->
     <bool name="config_gesture_settings_enabled">true</bool>
     
+
+    <!--string name="config_backup_settings_intent">settings://com.android.settings.backup.transport</string>
+    <string name="config_backup_settings_label">Backup Transport</string-->
+
 </resources>

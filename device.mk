@@ -437,10 +437,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libtinyxml2
 
-# Trust HAL
-# PRODUCT_PACKAGES += \
-#     lineage.trust@1.0-service
-
 # USB
 PRODUCT_PACKAGES += \
     android.hardware.usb@1.0-service
@@ -543,8 +539,8 @@ PRODUCT_PACKAGES += \
     AntHalService
 
 # Display calibration
-PRODUCT_PACKAGES += \
-     vendor.lineage.livedisplay@2.0-service.xiaomi
+#PRODUCT_PACKAGES += \
+#     vendor.lineage.livedisplay@2.0-service.xiaomi
 
 # vndfwk
 PRODUCT_PACKAGES += \
@@ -564,8 +560,6 @@ PRODUCT_DEXPREOPT_SPEED_APPS += \
     SystemUI \
     Settings \
     Launcher3QuickStep \
-    OPLauncher2 \
-    NexusLauncherRelease
          
 # Extras    
 PRODUCT_PACKAGES += \

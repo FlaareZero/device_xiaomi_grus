@@ -13,13 +13,13 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_p.mk)
 
 # Inherit some common stuff
-$(call inherit-product, vendor/aosp/common.mk)
+$(call inherit-product, vendor/arrow/config/common.mk)
 
 # Inherit from land device
 $(call inherit-product, $(DEVICE_PATH)/device.mk)
 
 # Device identifier. This must come after all inclusions.
-PRODUCT_NAME := aosp_grus
+PRODUCT_NAME := arrow_grus
 PRODUCT_DEVICE := grus
 PRODUCT_BRAND := Xiaomi
 PRODUCT_MODEL := MI 9 SE
@@ -32,7 +32,7 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_NAME="grus" \
     TARGET_DEVICE="grus"
 
-PLATFORM_SECURITY_PATCH := 2021-01-05
+#PLATFORM_SECURITY_PATCH := 2021-01-05
 
 WITH_GAPPS := false
 

@@ -160,7 +160,7 @@
          This flag controls whether the {@link Display#FLAG_SUPPORTS_PROTECTED_BUFFERS}
          flag is set for wifi displays.
     -->
-    <bool name="config_wifiDisplaySupportsProtectedBuffers">true</bool>
+    <bool name="config_wifiDisplaySupportsProtectedBuffers">false</bool>
 
     <!-- Boolean indicating whether the wifi chipset has dual frequency band support -->
     <bool translatable="false" name="config_wifi_dual_band_support">true</bool>
@@ -1186,9 +1186,14 @@
     
     <!-- Component name of the default wallpaper. This will be ImageWallpaper if not
          specified -->
-    <string name="default_wallpaper_component" translatable="false">com.aospextended.aexpapers</string>
+    <string name="default_wallpaper_component" translatable="false">com.android.wallpaperpicker</string>
     
     <!-- enable night mode by default -->
     <integer name="config_defaultNightMode">2</integer>
+
+    <bool name="config_cleanupUnusedFingerprints">false</bool>
+
+    <!-- Whether to allow process with media UID to access CameraServiceProxy -->
+    <bool name="config_allowMediaUidForCameraServiceProxy">true</bool>
 
 </resources>

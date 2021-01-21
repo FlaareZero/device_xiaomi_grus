@@ -525,6 +525,8 @@ vendor/lib64/libscveObjectTracker.so
 vendor/lib64/libarcsoft_portrait_lighting_c.so
 vendor/lib64/libril-qcril-hook-oem.so
 vendor/lib64/vendor.qti.hardware.data.connection@1.1.so
+vendor/lib64/librmnetctl.so
+vendor/lib64/vendor.qti.hardware.btconfigstore@1.0.so
 -vendor/app/CACertService/CACertService.apk
 -vendor/app/PowerOffAlarm/PowerOffAlarm.apk
 -vendor/app/TimeService/TimeService.apk
@@ -1329,6 +1331,8 @@ vendor/lib/libwfdsm_proprietary.so
 vendor/lib/libscveObjectTracker.so
 vendor/lib/libarcsoft_portrait_lighting_c.so
 vendor/lib/libril-qcril-hook-oem.so
+vendor/lib/librmnetctl.so
+vendor/lib/vendor.qti.hardware.btconfigstore@1.0.so
 -app/uceShimService/uceShimService.apk
 -app/imssettings/imssettings.apk
 -app/QtiTelephonyService/QtiTelephonyService.apk

@@ -496,7 +496,7 @@ PRODUCT_COPY_FILES += \
 # WiFi Display
 PRODUCT_PACKAGES += \
     libaacwrapper \
-    libnl
+    libnl \
 
 # Input
 PRODUCT_COPY_FILES += \
@@ -525,8 +525,9 @@ PRODUCT_PACKAGES += \
     hwaddrs \
     libbt-vendor \
     libbtconfigstore \
-    vendor.qti.hardware.btconfigstore@1.0.vendor 
+    vendor.qti.hardware.btconfigstore@1.0.vendor \
 
+   
 # Wifi display
 PRODUCT_BOOT_JARS += \
     WfdCommon

@@ -571,6 +571,7 @@ PRODUCT_PACKAGES += \
     Remove \
     SimpleGalleryPro \
     OPScreenRecorder \
-    onfire
+    onfire \
+    KernelProfilesHelper
 
 

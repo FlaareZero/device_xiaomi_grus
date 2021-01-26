@@ -572,6 +572,7 @@ PRODUCT_PACKAGES += \
     SimpleGalleryPro \
     OPScreenRecorder \
     onfire \
-    kernel_profiles_helper
+    kernel_profiles_helper \
+    nextcloud
 
 

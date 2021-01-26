@@ -1,0 +1,3 @@
+typeattribute kphelper coredomain;
+
+domain_auto_trans(init, kphelper_exec, kphelper)

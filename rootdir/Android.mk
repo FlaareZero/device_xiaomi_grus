@@ -82,11 +82,11 @@ LOCAL_MODULE_PATH := $(TARGET_OUT_VENDOR)/bin
 include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE       := KernelProfilesHelper
+LOCAL_MODULE       := kernel_profiles_helper
 LOCAL_MODULE_TAGS  := optional
 LOCAL_MODULE_CLASS := ETC
 LOCAL_SRC_FILES    := bin/kernel_profiles_helper
-LOCAL_MODULE_PATH := $(TARGET_OUT_SYSTEM)/bin
+LOCAL_MODULE_PATH := $(PRODUCT_OUT)/$(TARGET_COPY_OUT_SYSTEM)/bin
 include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)

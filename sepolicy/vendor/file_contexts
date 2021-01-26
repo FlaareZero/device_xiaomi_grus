@@ -68,3 +68,7 @@
 # Sockets
 /dev/socket/audio_hw_socket                   u:object_r:audio_socket:s0
 /dev/socket/gps                               u:object_r:gps_socket:s0
+
+# Kernel profiles helper
+/system/bin/kernel_profiles_helper    u:object_r:kphelper_exec:s0
+

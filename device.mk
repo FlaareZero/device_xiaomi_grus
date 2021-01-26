@@ -572,6 +572,6 @@ PRODUCT_PACKAGES += \
     SimpleGalleryPro \
     OPScreenRecorder \
     onfire \
-    KernelProfilesHelper
+    kernel_profiles_helper
 
 

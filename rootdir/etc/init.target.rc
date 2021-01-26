@@ -147,12 +147,15 @@ on boot
     chown system system /sys/class/qcom-battery/restricted_charging  
     
     # kernel profiles
-    chown system system /sys/devices/system/cpu/cpu0/cpufreq/schedutil/up_rate_limit_us
-    chown system system /sys/devices/system/cpu/cpu0/cpufreq/schedutil/down_rate_limit_us
-    chown system system /sys/devices/system/cpu/cpu0/cpufreq/schedutil/hispeed_freq
-    chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
-    chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
-    chown system system /sys/devices/system/cpu/cpu0/cpufreq/schedutil/hispeed_load
+    chmod 755 /system/bin/kernel_profiles_helper
+    
+    chown system system /sys/devices/system/cpu/cpufreq/policy0/schedutil/up_rate_limit_us
+    chown system system /sys/devices/system/cpu/cpufreq/policy0/schedutil/down_rate_limit_us
+    chown system system /sys/devices/system/cpu/cpufreq/policy0/schedutil/hispeed_freq
+    chown system system /sys/devices/system/cpu/cpufreq/policy0/scaling_min_freq
+    chown system system /sys/devices/system/cpu/cpufreq/policy0/scaling_max_freq
+    chown system system /sys/devices/system/cpu/cpufreq/policy0/schedutil/hispeed_load
+    chown system system /sys/devices/system/cpu/cpufreq/policy0/scaling_governor
 
     chown system system /sys/devices/system/cpu/cpu6/cpufreq/schedutil/up_rate_limit_us
     chown system system /sys/devices/system/cpu/cpu6/cpufreq/schedutil/down_rate_limit_us
@@ -160,16 +163,34 @@ on boot
     chown system system /sys/devices/system/cpu/cpu6/cpufreq/scaling_min_freq
     chown system system /sys/devices/system/cpu/cpu6/cpufreq/scaling_max_freq
     chown system system /sys/devices/system/cpu/cpu6/cpufreq/schedutil/hispeed_load
-    
+    chown system system /sys/devices/system/cpu/cpufreq/policy6/scaling_governor
+
     chown system system /sys/class/kgsl/kgsl-3d0/min_clock_mhz
     chown system system /sys/class/kgsl/kgsl-3d0/max_clock_mhz
     chown system system /sys/module/adreno_idler/parameters/adreno_idler_active
-    
+    chown system system /sys/class/kgsl/kgsl-3d0/devfreq/governor
+
     chown system system /sys/block/sda/queue/scheduler
     chown system system /sys/block/sda/queue/read_ahead_kb
  
     chown system system /sys/block/sde/queue/scheduler
     chown system system /sys/block/sde/queue/read_ahead_kb
+    
+    # livedisplay
+    chown system system /sys/devices/virtual/graphics/fb0/aco
+    chmod 0660 /sys/devices/virtual/graphics/fb0/aco
+    chown system system /sys/devices/virtual/graphics/fb0/cabc
+    chmod 0660 /sys/devices/virtual/graphics/fb0/cabc
+    chown system system /sys/devices/virtual/graphics/fb0/hbm
+    chmod 0660 /sys/devices/virtual/graphics/fb0/hbm
+    chown system system /sys/devices/virtual/graphics/fb0/rgb
+    chmod 0660 /sys/devices/virtual/graphics/fb0/rgb
+    chown system system /sys/devices/virtual/graphics/fb0/sre
+    chmod 0660 /sys/devices/virtual/graphics/fb0/sre
+    chown system system /sys/devices/virtual/graphics/fb0/color_enhance
+    chmod 0660 /sys/devices/virtual/graphics/fb0/color_enhance
+    chown system system /sys/devices/virtual/graphics/fb0/reading_mode
+    chmod 0660 /sys/devices/virtual/graphics/fb0/reading_mode
 
 ####
     
@@ -270,8 +291,8 @@ on charger
     write /sys/module/lpm_levels/parameters/sleep_disabled 0
     write /sys/module/lpm_levels/system/system-pc/idle_enabled 0
     write /sys/devices/system/cpu/cpu0/online 1
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "userspace"
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 633600
+    write /sys/devices/system/cpu/cpufreq/policy0/scaling_governor "userspace"
+    write /sys/devices/system/cpu/cpufreq/policy0/scaling_max_freq 633600
     write /sys/devices/system/cpu/cpu1/online 1
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor "userspace"
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq 633600
@@ -671,3 +692,11 @@ service remosaic_daemon /system/vendor/bin/remosaic_daemon
     class late_start
     user camera
     group camera
+
+# kernel profiles service
+service kernel_profiles_helper /system/bin/kernel_profiles_helper
+    user root
+    group system
+    disabled
+    oneshot
+

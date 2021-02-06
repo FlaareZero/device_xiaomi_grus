@@ -1,24 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-/**
- * Copyright (c) 2009, The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+/*
+** Copyright 2009, The Android Open Source Project
+**
+** Licensed under the Apache License, Version 2.0 (the "License");
+** you may not use this file except in compliance with the License.
+** You may obtain a copy of the License at
+**
+**     http://www.apache.org/licenses/LICENSE-2.0
+**
+** Unless required by applicable law or agreed to in writing, software
+** distributed under the License is distributed on an "AS IS" BASIS,
+** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+** See the License for the specific language governing permissions and
+** limitations under the License.
+*/
 -->
 
 <!-- These resources are around just to allow their values to be customized
-     for different hardware and product builds.  Do not translate. -->
+     for different hardware and product builds.  Do not translate.
+
+     NOTE: The naming convention is "config_camelCaseValue". Some legacy
+     entries do not follow the convention, but all new entries should. -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- If this is true, the screen will come on when you unplug usb/power/whatever. -->
@@ -1050,6 +1053,9 @@
     <integer-array name="config_keyboardTapVibePattern">
         <item>5</item>
     </integer-array>
+    
+
+    
 
     <!-- Whether or not we should show vendor mismatch message -->
     <bool name="config_show_vendor_mismatch_message">false</bool>
@@ -1081,6 +1087,10 @@
          black in software (to avoid aliasing or emulate a cutout that is not physically existent).
         -->
     <bool name="config_fillMainBuiltInDisplayCutout">false</bool>
+    
+    <!-- If true, and there is a cutout on the main built in display, the cutout will be masked
+         by shrinking the display such that it does not overlap the cutout area. -->
+    <bool name="config_maskMainBuiltInDisplayCutout">false</bool>
 
     <bool name="config_setColorTransformAccelerated">true</bool>
     <bool name="config_enableAutoPowerModes">true</bool>
@@ -1150,36 +1160,6 @@
     
      <!-- If the sensor that wakes up the lock screen is available or not. -->
     <bool name="config_dozeWakeLockScreenSensorAvailable">false</bool>
-    
-    <!-- Paths to the libraries that contain device specific key handlers -->
-    <string-array name="config_deviceKeyHandlerLibs" translatable="false">
-    </string-array>
-
-    <!-- Names of the key handler classes -->
-    <string-array name="config_deviceKeyHandlerClasses" translatable="false">
-    </string-array>
-
-     <!-- The list of vendor package signatures that should also be considered
-          platform signatures, specifically for use on devices with a vendor partition. -->
-     <string-array name="config_vendorPlatformSignatures">
-     </string-array>
-
-     <!-- Whether device has dash charging support -->
-    <bool name="config_hasDashCharger">false</bool>
-
-    <!-- Shows the required view for in-display fingerprint --> 
-    <bool name="config_supportsInDisplayFingerprint">true</bool>
-
-    <!-- Default value for proximity check on screen wake
-         NOTE ! - Enable for devices that have a fast response proximity sensor (ideally < 300ms)
-    -->
-    <bool name="config_proximityCheckOnWake">false</bool>
-    <integer name="config_proximityCheckTimeout">250</integer>
-    <bool name="config_proximityCheckOnWakeEnabledByDefault">false</bool>
-
-    <!-- Button backlight -->
-    <dimen name="config_buttonBrightnessSettingDefaultFloat">1.0</dimen>
-    <bool name="config_deviceHasVariableButtonBrightness">false</bool>
 
     <!-- Flag indicating whether we should enable smart battery. -->
     <bool name="config_smart_battery_available">true</bool>
@@ -1190,10 +1170,22 @@
     
     <!-- enable night mode by default -->
     <integer name="config_defaultNightMode">2</integer>
+    
+    <!-- Minimum velocity to initiate a fling, as measured in dips per second. -->
+    <dimen name="config_viewMinFlingVelocity">50dp</dimen>
 
-    <bool name="config_cleanupUnusedFingerprints">false</bool>
-
-    <!-- Whether to allow process with media UID to access CameraServiceProxy -->
-    <bool name="config_allowMediaUidForCameraServiceProxy">true</bool>
+    <!-- Maximum velocity to initiate a fling, as measured in dips per second. -->
+    <dimen name="config_viewMaxFlingVelocity">12000dp</dimen>
+    
+    <!-- Whether or not wcg (wide color gamut) should be enabled on this device,
+    we only enabled it while the device has ability of mixed color spaces composition -->
+    <bool name="config_enableWcgMode">true</bool>
+    
+        <integer-array name="config_availableColorModes">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </integer-array>
 
 </resources>

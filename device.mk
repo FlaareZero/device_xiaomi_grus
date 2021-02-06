@@ -571,8 +571,8 @@ PRODUCT_PACKAGES += \
     Remove \
     SimpleGalleryPro \
     OPScreenRecorder \
-    onfire \
     kernel_profiles_helper \
-    nextcloud
+    nextcloud \
+#    onfire \
 
 

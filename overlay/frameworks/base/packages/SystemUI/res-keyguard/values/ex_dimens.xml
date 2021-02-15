@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2015-2018 AOSiP
+     Copyright (C) 2020 The AospExtended Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -15,5 +15,11 @@
      limitations under the License.
 -->
 <resources>
-    <string name="quick_settings_sound_dnd">Silence</string>
+    <!-- The minimum bottom margin of the keyguard security container -->
+    <dimen name="kg_security_container_min_bottom_margin">190dp</dimen>
+
+    <!-- Padding added to keyguard status area when Type clock is in use -->
+    <dimen name="keyguard_status_area_typeclock_padding">32dp</dimen>
+    <!-- Weather condition icon  -->
+    <dimen name="weather_icon_size">24dp</dimen>
 </resources>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2020 The LineageOS Project
+     Copyright (C) 2015-2018 AOSiP
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -15,12 +15,9 @@
      limitations under the License.
 -->
 <resources>
- <!-- Padding added to keyguard status area when Type clock is in use -->
-    <dimen name="keyguard_status_area_typeclock_padding">32dp</dimen>
+    <!-- Color of the FOD view -->
+    <color name="config_fodColor">#00ff00</color>
+    <color name="config_fodColorBackground">#20000000</color>
 
-    <!-- The minimum bottom margin of the keyguard security container -->
-    <dimen name="kg_security_container_min_bottom_margin">170dp</dimen>
-
-    <!-- Weather condition icon  -->
-    <dimen name="weather_icon_size">24dp</dimen>
+    <color name="qs_tile_background_color_disabled">#F2F2F2</color>
 </resources>

@@ -83,11 +83,18 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.telephony.ims.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.telephony.ims.xml \
     frameworks/native/data/etc/com.android.nfc_extras.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.android.nfc_extras.xml \
     frameworks/native/data/etc/com.nxp.mifare.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.nxp.mifare.xml \
-    frameworks/native/data/etc/handheld_core_hardware.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/handheld_core_hardware.xml 
+    frameworks/native/data/etc/handheld_core_hardware.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/handheld_core_hardware.xml \
+    $(LOCAL_PATH)/configs/qti_whitelist.xml:system/etc/sysconfig/qti_whitelist.xml \
+    $(LOCAL_PATH)/permissions/privapp-permissions-qti.xml:system/etc/permissions/privapp-permissions-qti.xml \
+    $(LOCAL_PATH)/permissions/com.custom.ambient.display.xml:system/etc/permissions/com.custom.ambient.display.xml
 
 # AID/fs configs
 PRODUCT_PACKAGES += \
     fs_config_files
+    
+# ANT+
+PRODUCT_PACKAGES += \
+    AntHalService
 
 # Audio
 PRODUCT_PACKAGES += \
@@ -152,14 +159,26 @@ PRODUCT_COPY_FILES += \
     frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/r_submix_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/usb_audio_policy_configuration.xml
 
+# Bluetooth
+PRODUCT_PACKAGES += \
+    BluetoothResCommon \
+    libbthost_if \
+    libldacBT_enc \
+    libldacBT_abr \
+    hwaddrs \
+    libbt-vendor \
+    libbtconfigstore \
+    vendor.qti.hardware.btconfigstore@1.0.vendor \
+
 # Camera
 PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl \
     android.hardware.camera.provider@2.4-service \
     libxml2 \
-    vendor.qti.hardware.camera.device@1.0.vendor \
     libdng_sdk.vendor \
-    camera.shim
+    camera.shim \
+    vendor.qti.hardware.camera.device@1.0 \
+#    vendor.qti.hardware.camera.device@1.0.vendor \
 
 # CODEC 2
 PRODUCT_PACKAGES += \
@@ -167,17 +186,17 @@ PRODUCT_PACKAGES += \
     libcodec2_hidl@1.0.vendor \
     libavservices_minijail_vendor
 
+# Consumer IR
+PRODUCT_PACKAGES += \
+    android.hardware.ir@1.0-impl \
+    android.hardware.ir@1.0-service
+    
 # CNE
 PRODUCT_PACKAGES += \
     cneapiclient \
     com.quicinc.cne \
     libcnefeatureconfig \
     services-ext
-
-# Consumer IR
-PRODUCT_PACKAGES += \
-    android.hardware.ir@1.0-impl \
-    android.hardware.ir@1.0-service
 
 # Display/Graphics
 PRODUCT_PACKAGES += \
@@ -204,12 +223,34 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.display.allocator@1.0-service \
     vendor.qti.hardware.display.mapper@3.0.vendor \
     libsdm-disp-vndapis
+    
+# Display calibration
+PRODUCT_PACKAGES += \
+     vendor.lineage.livedisplay@2.0-service.xiaomi
 
 # DRM
 PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-impl \
     android.hardware.drm@1.0-service \
     android.hardware.drm@1.3-service.clearkey
+
+# Fingerprint
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.fingerprint.xml:system/etc/permissions/android.hardware.fingerprint.xml \
+    $(LOCAL_PATH)/configs/vendor.lineage.biometrics.fingerprint.inscreen.xml:system/etc/permissions/vendor.lineage.biometrics.fingerprint.inscreen.xml
+
+# Fingerprint
+PRODUCT_PACKAGES += \
+    vendor.lineage.biometrics.fingerprint.inscreen@1.0-service.xiaomi_grus \
+    android.hardware.biometrics.fingerprint@2.1-service.xiaomi_grus
+
+# HIDL
+PRODUCT_PACKAGES += \
+    android.hidl.base@1.0 \
+    android.hidl.base@1.0_system \
+    android.hidl.manager@1.0 \
+    android.hidl.manager@1.0_system \
+    android.hidl.manager@1.0-java
 
 # GPS
 PRODUCT_COPY_FILES += \
@@ -234,8 +275,13 @@ PRODUCT_PACKAGES += \
     android.hardware.health@2.1-impl:64 \
     android.hardware.health@2.1-impl.recovery \
     android.hardware.health@2.1-service
+    
+# HWBinder
+PRODUCT_PACKAGES += \
+    libhwbinder \
+    libhwbinder.vendor
 
-# Common init scripts
+# Init scripts
 PRODUCT_PACKAGES += \
     init.msm.usb.configfs.rc \
     init.qcom.rc \
@@ -249,50 +295,12 @@ PRODUCT_PACKAGES += \
     init.qcom.post_boot.sh \
     fstab.qcom
 
-# Dex
-PRODUCT_DEXPREOPT_SPEED_APPS += \
-    SystemUI
-
-# Fingerprint
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.fingerprint.xml:system/etc/permissions/android.hardware.fingerprint.xml \
-    $(LOCAL_PATH)/configs/vendor.lineage.biometrics.fingerprint.inscreen.xml:system/etc/permissions/vendor.lineage.biometrics.fingerprint.inscreen.xml
-
-# Fingerprint
-PRODUCT_PACKAGES += \
-    vendor.lineage.biometrics.fingerprint.inscreen@1.0-service.xiaomi_grus \
-    android.hardware.biometrics.fingerprint@2.1-service.xiaomi_grus
-
-# HIDL
-PRODUCT_PACKAGES += \
-    android.hidl.base@1.0 \
-    android.hidl.base@1.0_system \
-    android.hidl.manager@1.0 \
-    android.hidl.manager@1.0_system \
-    android.hidl.manager@1.0-java
-
-# Telephony
-PRODUCT_PACKAGES += \
-    ims-ext-common \
-    ims_ext_common.xml \
-    qti-telephony-hidl-wrapper \
-    qti_telephony_hidl_wrapper.xml \
-    qti-telephony-utils \
-    qti_telephony_utils.xml \
-    telephony-ext
-
-PRODUCT_BOOT_JARS += \
-    telephony-ext
-
 # Input
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
-    $(LOCAL_PATH)/keylayout/qwerty.kl:system/usr/keylayout/qwerty.kl
-
-# Lights
-PRODUCT_PACKAGES += \
-    android.hardware.light@2.0-service.grus \
-    lights.sdm710 \
+    $(LOCAL_PATH)/keylayout/qwerty.kl:system/usr/keylayout/qwerty.kl \
+    $(LOCAL_PATH)/idc/qwerty.idc:system/usr/idc/qwerty.idc \
+    $(LOCAL_PATH)/idc/qwerty2.idc:system/usr/idc/qwerty2.idc
 
 # IPACM
 PRODUCT_PACKAGES += \
@@ -304,6 +312,11 @@ PRODUCT_PACKAGES += \
 # IRSC
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sec_config:$(TARGET_COPY_OUT_VENDOR)/etc/sec_config
+    
+# Lights
+PRODUCT_PACKAGES += \
+    android.hardware.light@2.0-service.grus \
+    lights.sdm710 \
 
 # Media
 PRODUCT_COPY_FILES += \
@@ -320,22 +333,6 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_audio.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_telephony.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_video.xml
-
-# MSM IRQ
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/msm_irqbalance.conf:$(TARGET_COPY_OUT_VENDOR)/etc/msm_irqbalance.conf
-
-# Net
-PRODUCT_PACKAGES += \
-    android.system.net.netd@1.0 \
-    libandroid_net \
-    netutils-wrapper-1.0
-
-# IPv6
-PRODUCT_PACKAGES += \
-    ebtables \
-    ethertypes \
-    libebtc
 
 # Media
 PRODUCT_PACKAGES += \
@@ -358,6 +355,35 @@ PRODUCT_PACKAGES += \
     libstagefrighthw \
     libgui_vendor
 
+# MSM IRQ
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/msm_irqbalance.conf:$(TARGET_COPY_OUT_VENDOR)/etc/msm_irqbalance.conf
+
+# NFC
+PRODUCT_PACKAGES += \
+    NfcNci \
+    SecureElement \
+    Tag \
+    android.hardware.nfc@1.2-service \
+    android.hardware.secure_element@1.1-service
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/nfc/libnfc-nci.conf:$(TARGET_COPY_OUT_PRODUCT)/etc/libnfc-nci.conf \
+    $(LOCAL_PATH)/configs/nfc/libese-nxp.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libese-nxp.conf \
+    $(LOCAL_PATH)/configs/nfc/libnfc-nxp.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nxp.conf
+
+# Net
+PRODUCT_PACKAGES += \
+    android.system.net.netd@1.0 \
+    libandroid_net \
+    netutils-wrapper-1.0
+
+# Net IPv6
+PRODUCT_PACKAGES += \
+    ebtables \
+    ethertypes \
+    libebtc
+
 # Public Libraries
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/public.libraries.txt:$(TARGET_COPY_OUT_VENDOR)/etc/public.libraries.txt
@@ -369,12 +395,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/power/configs/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json \
     $(LOCAL_PATH)/configs/perf/perf-profile0.conf:$(TARGET_COPY_OUT_VENDOR)/etc/perf/perf-profile0.conf
-
-# Permission
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/qti_whitelist.xml:system/etc/sysconfig/qti_whitelist.xml \
-    $(LOCAL_PATH)/permissions/privapp-permissions-qti.xml:system/etc/permissions/privapp-permissions-qti.xml \
-    $(LOCAL_PATH)/permissions/com.custom.ambient.display.xml:system/etc/permissions/com.custom.ambient.display.xml
 
 # RCS
 PRODUCT_PACKAGES += \
@@ -424,15 +444,30 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/seccomp/mediacodec-seccomp.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy
 #    $(LOCAL_PATH)/seccomp/mediaextractor-seccomp.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediaextractor.policy
 
+# Telephony
+PRODUCT_PACKAGES += \
+    ims-ext-common \
+    ims_ext_common.xml \
+    qti-telephony-common \
+    qti-telephony-hidl-wrapper \
+    qti_telephony_hidl_wrapper.xml \
+    qti-telephony-utils \
+    qti_telephony_utils.xml \
+    telephony-ext
+   
+# Telephony
+PRODUCT_BOOT_JARS += \
+    telephony-ext
+
+# TextClassifier
+PRODUCT_PACKAGES += \
+    textclassifier.bundle1
+    
 # Thermal
 PRODUCT_PACKAGES += \
     android.hardware.thermal@1.0-impl \
     android.hardware.thermal@1.0-service \
     thermal.sdm710
-
-# TextClassifier
-PRODUCT_PACKAGES += \
-    textclassifier.bundle1
 
 # Touchscreen
 PRODUCT_PACKAGES += \
@@ -445,7 +480,13 @@ PRODUCT_PACKAGES += \
 # Vibrator
 PRODUCT_PACKAGES += \
     android.hardware.vibrator@1.0-impl \
-    android.hardware.vibrator@1.0-service 
+    android.hardware.vibrator@1.0-service
+
+# vndfwk
+PRODUCT_PACKAGES += \
+    libqti_vndfwk_detect \
+    libqti_vndfwk_detect.vendor \
+    libqti_vndfwk_detect.qti
 
 # VNDK-SP
 PRODUCT_PACKAGES += \
@@ -456,11 +497,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     prebuilts/vndk/v29/arm64/arch-arm-armv8-a/shared/vndk-sp/libcutils.so:$(TARGET_COPY_OUT_SYSTEM)/lib/libcutils-v29.so \
     prebuilts/vndk/v29/arm64/arch-arm64-armv8-a/shared/vndk-sp/libcutils.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/libcutils-v29.so
-
-# HWBinder
-PRODUCT_PACKAGES += \
-    libhwbinder \
-    libhwbinder.vendor
 
 # VR
 PRODUCT_PACKAGES += \
@@ -491,79 +527,30 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/p2p_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/p2p_supplicant_overlay.conf \
     $(LOCAL_PATH)/wifi/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant_overlay.conf \
     $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/WCNSS_qcom_cfg.ini \
-    $(LOCAL_PATH)/wifi/lowi.conf:$(TARGET_COPY_OUT_VENDOR)/etc/lowi.conf 
+    $(LOCAL_PATH)/wifi/lowi.conf:$(TARGET_COPY_OUT_VENDOR)/etc/lowi.conf
 
 # WiFi Display
 PRODUCT_PACKAGES += \
     libaacwrapper \
     libnl \
-
-# Input
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/idc/qwerty.idc:system/usr/idc/qwerty.idc \
-    $(LOCAL_PATH)/idc/qwerty2.idc:system/usr/idc/qwerty2.idc
-
-
-PRODUCT_PACKAGES += \
-    NfcNci \
-    SecureElement \
-    Tag \
-    android.hardware.nfc@1.2-service \
-    android.hardware.secure_element@1.1-service
-
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/nfc/libnfc-nci.conf:$(TARGET_COPY_OUT_PRODUCT)/etc/libnfc-nci.conf \
-    $(LOCAL_PATH)/configs/nfc/libese-nxp.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libese-nxp.conf \
-    $(LOCAL_PATH)/configs/nfc/libnfc-nxp.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nxp.conf 
-
-# Bluetooth
-PRODUCT_PACKAGES += \
-    BluetoothResCommon \
-    libbthost_if \
-    libldacBT_enc \
-    libldacBT_abr \
-    hwaddrs \
-    libbt-vendor \
-    libbtconfigstore \
-    vendor.qti.hardware.btconfigstore@1.0.vendor \
-
-   
+    
 # Wifi display
 PRODUCT_BOOT_JARS += \
     WfdCommon
 
-# qti telephony
-PRODUCT_PACKAGES += \
-    qti-telephony-common
+####################################################################33
 
-# ANT+
+# Remove unused stock apps
 PRODUCT_PACKAGES += \
-    AntHalService
+    RemovePackages
 
-# Display calibration
-PRODUCT_PACKAGES += \
-     vendor.lineage.livedisplay@2.0-service.xiaomi
-
-# vndfwk
-PRODUCT_PACKAGES += \
-    libqti_vndfwk_detect \
-    libqti_vndfwk_detect.vendor \
-    libqti_vndfwk_detect.qti
-
-PRODUCT_PACKAGES += \
-    LatinIME
-
-# Remove stock apps
-PRODUCT_PACKAGES += \
-    RemovePackages 
-    
-# Dex  
+# Dex
 PRODUCT_DEXPREOPT_SPEED_APPS += \
     SystemUI \
     Settings \
     Launcher3QuickStep \
-         
-# Extras    
+
+# Extras
 PRODUCT_PACKAGES += \
     SimTogglePlus \
     mixplorer \
@@ -571,8 +558,10 @@ PRODUCT_PACKAGES += \
     Remove \
     SimpleGalleryPro \
     OPScreenRecorder \
-    kernel_profiles_helper \
-    nextcloud \
-#    onfire \
+	nextcloud \
 
-
+# Custom init services
+PRODUCT_PACKAGES += \
+	kernel_profiles_helper \
+    
+   

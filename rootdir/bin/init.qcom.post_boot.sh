@@ -9,11 +9,6 @@ write(){
     [[ "$?" == "1" ]] && { kwrite "okita: failed to set $1 to $2"; }
 }
 
-#function configure_zram_parameters() {
-#    echo 0 > /sys/block/zram0/disksize
-#    swapoff /dev/block/zram*
-#}
-
 function configure_zram_parameters() {
     MemTotalStr=`cat /proc/meminfo | grep MemTotal`
     MemTotal=${MemTotalStr:16:8}
@@ -26,25 +21,18 @@ function configure_zram_parameters() {
     # For >=2GB Non-Go device, size = 1GB
     # And enable lz4 zram compression for Go targets.
 
-    if [ "$low_ram" == "true" ]; then 
-        echo lz4 > /sys/block/zram0/comp_algorithm
-    fi   
-
-    if [ -f /sys/block/zram0/disksize ]; then 
-        if [ $MemTotal -le 524288 ]; then 
-            echo 402653184 > /sys/block/zram0/disksize
-        elif [ $MemTotal -le 1048576 ]; then 
-            echo 805306368 > /sys/block/zram0/disksize
-        else 
-            # Set Zram disk size=1.5GB for >=2GB Non-Go targets.
-            echo 1585446912 > /sys/block/zram0/disksize
-        fi   
-        mkswap /dev/block/zram0
-        swapon /dev/block/zram0 -p 32758
-    fi   
+    # echo 0 > /sys/block/zram0/disksize
+    # swapoff /dev/block/zram*
+    
+    echo zstd > /sys/block/zram0/comp_algorithm
+    echo 2147483648 > /sys/block/zram0/disksize
+    mkswap /dev/block/zram0
+    swapon /dev/block/zram0 -p 32758   
 }
 
 configure_zram_parameters
+
+echo 30 > /proc/sys/vm/swappiness
 
 # Core control parameters on silver
 echo 0 0 0 0 1 1 > /sys/devices/system/cpu/cpu0/core_ctl/not_preferred
@@ -171,17 +159,12 @@ for i in /sys/block/*/queue; do
    write $i/add_random 0
    write $i/iostats 0
    write $i/rotational 0
-if [ $i != /sys/block/sda/queue && $i != /sys/block/sde/queue ]; then
-   write $i/read_ahead_kb 256
-   write $i/scheduler bfq
 fi
 done 
 
 # Reset entropy values
 write /proc/sys/kernel/random/read_wakeup_threshold 128
 write /proc/sys/kernel/random/write_wakeup_threshold 128
-
-echo 100 > /proc/sys/vm/swappiness
 
 adj_series=`cat /sys/module/lowmemorykiller/parameters/adj`
 adj_1="${adj_series#*,}"
@@ -208,14 +191,6 @@ echo 1 > /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk
 if [ -f /sys/module/lowmemorykiller/parameters/oom_reaper ]; then
     echo 1 > /sys/module/lowmemorykiller/parameters/oom_reaper
 fi
-
-#Set PPR parameters for all other targets.
-#echo $set_almk_ppr_adj > /sys/module/process_reclaim/parameters/min_score_adj
-#echo 1 > /sys/module/process_reclaim/parameters/enable_process_reclaim
-#echo 50 > /sys/module/process_reclaim/parameters/pressure_min
-#echo 70 > /sys/module/process_reclaim/parameters/pressure_max
-#echo 30 > /sys/module/process_reclaim/parameters/swap_opt_eff
-#echo 512 > /sys/module/process_reclaim/parameters/per_swap_size
 
 # Let kernel know our image version/variant/crm_version
 if [ -f /sys/devices/soc0/select_image ]; then

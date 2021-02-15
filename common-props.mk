@@ -18,7 +18,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.camera.HAL3.enabled=1 \
     persist.vendor.camera.eis.enable=1 \
     persist.camera.facepp.fdenable=0 \
-    vendor.camera.aux.packagelist=com.google.android.GoogleCamera,org.codeaurora.snapcam,com.android.camera 
+    vendor.camera.aux.packagelist=com.google.android.GoogleCamera,org.codeaurora.snapcam,net.sourceforge.opencamera
 
 # CNE and DPM
 PRODUCT_PROPERTY_OVERRIDES += \

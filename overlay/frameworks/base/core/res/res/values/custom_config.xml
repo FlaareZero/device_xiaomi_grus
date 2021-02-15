@@ -36,5 +36,23 @@
     <bool name="config_defaultColorEnhancement">false</bool>
     <bool name="config_defaultCABC">false</bool>
 
+    <!--string-array name="config_displayModeMappings" translatable="false">
+        <item>38default_OLED:Default OLED</item>
+        <item>36P3_native:Standard</item>
+        <item>hal_hdr:HDR</item>
+        <item>40smart_mc:DCI_P3</item>
+        <item>03srgb_d65:sRGB</item>
+        <item>41game1:Game</item>
+    </string-array-->
+
+    <bool name="config_filterDisplayModes">true</bool>
+
+    <integer-array name="config_availableColorModes">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </integer-array>
+
 </resources>
 

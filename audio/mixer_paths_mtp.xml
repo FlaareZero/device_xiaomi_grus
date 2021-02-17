@@ -412,9 +412,9 @@
     <ctl name="Ultrasound Event" value="0" />
     <ctl name="Ultrasound Mode" value="0" />
     <ctl name="Ultrasound Suspend" value="0" />
-    <ctl name="Ultrasound Enable" value="Off" />
-    <ctl name="Ultrasound Rx Port" value="Off" />
-    <ctl name="Ultrasound RampDown" value="Off" />
+    <ctl name="Ultrasound Enable" value="0" />
+    <ctl name="Ultrasound Rx Port" value="0" />
+    <ctl name="Ultrasound RampDown" value="0" />
     <ctl name="Ultrasound Microphone Index" value="0" />
 
     <!-- Add the new path begin -->

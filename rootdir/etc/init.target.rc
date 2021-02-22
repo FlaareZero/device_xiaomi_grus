@@ -106,6 +106,7 @@ service charge_logger /vendor/bin/charge_logger
 
 on property:sys.boot_completed=1
     start charge_logger
+    start dcim_observer
 
 # For cpusets initialize for Silver Only first and then Silver + Gold
 # Silver Only configuration cannot work with 0-7
@@ -113,17 +114,17 @@ on boot
     chown system system /sys/class/leds/white/brightness
     chown system system /sys/class/leds/white/blink
     chown system system /sys/class/drm/card0-DSI-1/disp_param
-####    
+####
     # vibrator
     chown system system /sys/devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-01/c440000.qcom,spmi:qcom,pm660@1:qcom,haptics@c000/leds/vibrator/vmax_mv
     chown system system /sys/devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-01/c440000.qcom,spmi:qcom,pm660@1:qcom,haptics@c000/leds/vibrator/vmax_override
     chown system system /sys/devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-01/c440000.qcom,spmi:qcom,pm660@1:qcom,haptics@c000/leds/vibrator/vmax_user
     chown system system /sys/devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-01/c440000.qcom,spmi:qcom,pm660@1:qcom,haptics@c000/leds/vibrator/vmax_mv_strong
     chown system system /sys/devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-01/c440000.qcom,spmi:qcom,pm660@1:qcom,haptics@c000/leds/vibrator/vmax_call
-    
+
     # FPS info
     chown system system /sys/devices/platform/soc/ae00000.qcom,mdss_mdp/drm/card0/sde-crtc-0/measured_fps
-    
+
     # kcal
     chown system system /sys/module/msm_drm/parameters/kcal_cont
     chown system system /sys/module/msm_drm/parameters/kcal_hue
@@ -131,15 +132,19 @@ on boot
     chown system system /sys/module/msm_drm/parameters/kcal_blue
     chown system system /sys/module/msm_drm/parameters/kcal_green
     chown system system /sys/module/msm_drm/parameters/kcal_sat
-    chown system system /sys/module/msm_drm/parameters/kcal_val 
-    
+    chown system system /sys/module/msm_drm/parameters/kcal_val
+
     # restricted charging/current
     chown system system /sys/class/qcom-battery/restricted_current
-    chown system system /sys/class/qcom-battery/restricted_charging  
-    
+    chown system system /sys/class/qcom-battery/restricted_charging
+
     # kernel profiles
     chmod 755 /system/bin/kernel_profiles_helper
-    
+
+    # dcim observer
+    chmod 755 /vendor/bin/dcim_observer
+    chmod 755 /vendor/bin/inotifywait
+
     chown system system /sys/devices/system/cpu/cpufreq/policy0/schedutil/up_rate_limit_us
     chown system system /sys/devices/system/cpu/cpufreq/policy0/schedutil/down_rate_limit_us
     chown system system /sys/devices/system/cpu/cpufreq/policy0/schedutil/hispeed_freq
@@ -155,7 +160,7 @@ on boot
     chown system system /sys/devices/system/cpu/cpu6/cpufreq/scaling_max_freq
     chown system system /sys/devices/system/cpu/cpu6/cpufreq/schedutil/hispeed_load
     chown system system /sys/devices/system/cpu/cpufreq/policy6/scaling_governor
-    
+
     chown system system /dev/stune/top-app/schedtune.boost
 
     chown system system /sys/class/kgsl/kgsl-3d0/min_clock_mhz
@@ -165,10 +170,10 @@ on boot
 
     chown system system /sys/block/sda/queue/scheduler
     chown system system /sys/block/sda/queue/read_ahead_kb
- 
+
     chown system system /sys/block/sde/queue/scheduler
     chown system system /sys/block/sde/queue/read_ahead_kb
-    
+
     # livedisplay
     chown system system /sys/devices/virtual/graphics/fb0/aco
     chmod 0660 /sys/devices/virtual/graphics/fb0/aco
@@ -186,7 +191,7 @@ on boot
     chmod 0660 /sys/devices/virtual/graphics/fb0/reading_mode
 
 ####
-    
+
     start rmt_storage
     start rfs_access
     write /dev/cpuset/top-app/cpus 0-7
@@ -663,8 +668,8 @@ on post-fs-data
     restorecon /sys/module/migt/parameters/migt_ms
     chmod 0777 /sys/module/migt/parameters/migt_thresh
     restorecon /sys/module/migt/parameters/migt_thresh
-    
-#   Smart Charging 
+
+#   Smart Charging
     chown system system /sys/class/power_supply/battery/input_suspend
     chmod 0666 /sys/class/power_supply/battery/input_suspend
 
@@ -693,3 +698,7 @@ service kernel_profiles_helper /system/bin/kernel_profiles_helper
     disabled
     oneshot
 
+# DCIM content observer
+service dcim_observer /vendor/bin/dcim_observer
+    user root
+    group system

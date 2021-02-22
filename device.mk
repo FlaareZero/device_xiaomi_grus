@@ -559,9 +559,10 @@ PRODUCT_PACKAGES += \
     SimpleGalleryPro \
     OPScreenRecorder \
 	nextcloud \
+	mgc
 
 # Custom init services
 PRODUCT_PACKAGES += \
 	kernel_profiles_helper \
-    
+    dcim_observer \
    
